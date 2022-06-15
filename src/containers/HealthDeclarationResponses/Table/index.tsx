@@ -7,12 +7,12 @@ import { TFormState } from "../../../constants/types";
 
 const Table = ({ data }: { data: TFormState[] }) => {
   return (
-    <Container sx={{ p: 4 }}>
+    <Container data-testid="responses-table" sx={{ p: 4 }}>
       <DataGrid
         rows={data}
         columns={healthDeclarationResponsesColumns}
         pageSize={25}
-        getRowId={(row) => row._id}
+        getRowId={(row) => row?._id}
         autoHeight={true}
         disableExtendRowFullWidth={false}
       />

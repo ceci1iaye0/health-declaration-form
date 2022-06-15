@@ -7,6 +7,7 @@ export interface ILoader {
 
 const Loader = ({ visible }: ILoader) => (
   <Backdrop
+    data-testid="loader"
     sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
     open={visible}
   >

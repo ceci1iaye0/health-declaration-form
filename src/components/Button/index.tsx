@@ -7,7 +7,11 @@ export interface IButton extends Omit<ButtonProps, "disabled"> {
 }
 
 const Button = ({ label, disabled, ...buttonProps }: IButton) => (
-  <MButton {...buttonProps} disabled={disabled && disabled()}>
+  <MButton
+    data-testid="btn-field"
+    {...buttonProps}
+    disabled={disabled && disabled()}
+  >
     {label}
   </MButton>
 );

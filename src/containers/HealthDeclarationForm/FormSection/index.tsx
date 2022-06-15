@@ -5,7 +5,7 @@ import {
   CloseContactToggle,
   NameText,
   SymptomsToggle,
-  TemparatureText,
+  TemperatureText,
 } from "../InputFields";
 import useCustomMethods from "./useCustomMethods";
 import useCustomStates from "./useCustomStates";
@@ -21,13 +21,14 @@ const FormSection = () => {
   return (
     <>
       <NameText value={formState.name} handleText={handleText} />
-      <TemparatureText value={formState.temperature} handleText={handleText} />
+      <TemperatureText value={formState.temperature} handleText={handleText} />
       <SymptomsToggle value={formState.symptoms} handleToggle={handleToggle} />
       <CloseContactToggle
         value={formState.closeContact}
         handleToggle={handleToggle}
       />
       <Button
+        data-testid="submit-btn"
         sx={{ my: 3, px: 4 }}
         label="Submit"
         size="large"

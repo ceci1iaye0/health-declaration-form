@@ -20,6 +20,7 @@ export const NameText = ({
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <Text
+    data-testid="name-input"
     label={FORM_INPUTS_LABELS[EFormState.Name]}
     defaultValue={value}
     onChange={handleText(EFormState.Name)}
@@ -29,7 +30,7 @@ export const NameText = ({
   />
 );
 
-export const TemparatureText = ({
+export const TemperatureText = ({
   value,
   handleText,
 }: {
@@ -39,6 +40,7 @@ export const TemparatureText = ({
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <Text
+    data-testid="temperature-input"
     label={FORM_INPUTS_LABELS[EFormState.Temperature]}
     defaultValue={value}
     onChange={handleText(EFormState.Temperature)}
@@ -62,6 +64,7 @@ export const SymptomsToggle = ({
   ) => void;
 }) => (
   <Toggle
+    data-testid="symptoms-input"
     label={FORM_INPUTS_LABELS[EFormState.Symptoms]}
     value={value}
     options={YES_NO_OPTIONS}
@@ -83,6 +86,7 @@ export const CloseContactToggle = ({
   ) => void;
 }) => (
   <Toggle
+    data-testid="close-contact-input"
     label={FORM_INPUTS_LABELS[EFormState.CloseContact]}
     value={value}
     options={YES_NO_OPTIONS}

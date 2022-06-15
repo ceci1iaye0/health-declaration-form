@@ -15,7 +15,7 @@ export interface IText extends Omit<OutlinedTextFieldProps, "label"> {
 
 const Text = ({ label, endAdornment, ...textProps }: IText) => {
   return (
-    <InputContainer>
+    <InputContainer data-testid="text-field">
       <Label label={label} variant="h6" />
       <TextField
         {...textProps}

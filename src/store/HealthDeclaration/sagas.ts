@@ -30,7 +30,7 @@ export function* submitHealthDeclarationSaga({
     yield put(submitHealthDeclaration.success());
     navigate(ERoutes.SuccessResponse);
   } catch (err) {
-    yield put(submitHealthDeclaration.failure((err as TErrorResponse).error));
+    yield put(submitHealthDeclaration.failure((err as TErrorResponse)?.error));
   }
 }
 

@@ -16,7 +16,7 @@ export interface IToggle extends Omit<ToggleButtonGroupProps, "value"> {
 }
 
 const Toggle = ({ label, value, options, ...toggleProps }: IToggle) => (
-  <FormControl>
+  <FormControl data-testid="toggle-field">
     <Label label={label} variant="h6" />
     <ToggleButtonGroup {...toggleProps}>
       {options?.map((option, index) => (

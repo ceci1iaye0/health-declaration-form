@@ -5,7 +5,7 @@ import Label from "../Label";
 import { AppContainer, ChildrenContainer } from "./styles";
 
 const Layout = ({ children }: { children: React.ReactNode }) => (
-  <AppContainer>
+  <AppContainer data-testid="layout">
     <AppBar position="sticky" sx={{ px: 4 }}>
       <Label label="Covid-19 Health Declaration Form" variant="h5" />
     </AppBar>

@@ -14,9 +14,14 @@ const Error = ({ msg }: TError) => {
   const refreshPage = () => navigate(0);
 
   return (
-    <Container>
+    <Container data-testid="error">
       <Label label={msg} variant="h5" />
-      <Button label="Try again" variant="outlined" onClick={refreshPage} />
+      <Button
+        data-testid="retry-btn"
+        label="Try again"
+        variant="outlined"
+        onClick={refreshPage}
+      />
     </Container>
   );
 };

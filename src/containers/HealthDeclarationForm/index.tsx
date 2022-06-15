@@ -15,7 +15,7 @@ const HealthDeclarationForm = () => {
     return <Error msg={submitHealthDeclarationError} />;
 
   return (
-    <Container>
+    <Container data-testid="health-declaration-form">
       <FormSection />
       <Loader visible={isSumbitHealthDeclarationLoading} />
     </Container>

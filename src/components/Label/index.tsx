@@ -10,7 +10,7 @@ const Label = ({ label, variant }: TLabel) => {
   if (!label) return null;
 
   return (
-    <Typography variant={variant} sx={{ py: 2 }}>
+    <Typography data-testid="label-field" variant={variant} sx={{ py: 2 }}>
       {label}
     </Typography>
   );
