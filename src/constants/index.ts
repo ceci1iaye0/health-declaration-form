@@ -1,4 +1,4 @@
-import { TCheckBoxOption, TSymptoms, TToggleOption } from "./types";
+import { TToggleOption } from "./types";
 
 export enum EFormState {
   Name = "name",
@@ -7,82 +7,16 @@ export enum EFormState {
   CloseContact = "closeContact",
 }
 
-export enum ESymptoms {
-  Fever = "fever",
-  Flu = "flu",
-  Cough = "cough",
-  SmellImpairment = "smellImpairment",
-  BreathingDifficulties = "breathingDifficulties",
-  BodyAches = "bodyAches",
-  Headaches = "headaches",
-  Fatigue = "fatigue",
-  SoreThroat = "soreThroat",
-  Diarrhoes = "diarrhoes",
-  None = "none",
-}
-
-export const SYMPTOMS_OPTIONS: TCheckBoxOption[] = [
-  {
-    name: ESymptoms.Fever,
-    label: "Fever",
-  },
-  {
-    name: ESymptoms.Flu,
-    label: "Flu or Running nose",
-  },
-  {
-    name: ESymptoms.Cough,
-    label: "Cough",
-  },
-  {
-    name: ESymptoms.SmellImpairment,
-    label: "Smell Impairment",
-  },
-  {
-    name: ESymptoms.BreathingDifficulties,
-    label: "Breathing Difficulties",
-  },
-  {
-    name: ESymptoms.BodyAches,
-    label: "Body Aches",
-  },
-  {
-    name: ESymptoms.Headaches,
-    label: "Headaches",
-  },
-  {
-    name: ESymptoms.Fatigue,
-    label: "Fatigue",
-  },
-  {
-    name: ESymptoms.SoreThroat,
-    label: "Sore Throat",
-  },
-  {
-    name: ESymptoms.Diarrhoes,
-    label: "Diarrhoes",
-  },
-  {
-    name: ESymptoms.None,
-    label: "None of the above",
-  },
-];
-
-export const DEFAULT_SYMPTOMS_OPTIONS: TSymptoms = {
-  [ESymptoms.Fever]: false,
-  [ESymptoms.Flu]: false,
-  [ESymptoms.Cough]: false,
-  [ESymptoms.SmellImpairment]: false,
-  [ESymptoms.BreathingDifficulties]: false,
-  [ESymptoms.BodyAches]: false,
-  [ESymptoms.Headaches]: false,
-  [ESymptoms.Fatigue]: false,
-  [ESymptoms.SoreThroat]: false,
-  [ESymptoms.Diarrhoes]: false,
-  [ESymptoms.None]: false,
+export const FORM_INPUTS_LABELS = {
+  [EFormState.Name]: "1. Name",
+  [EFormState.Temperature]: "2. Temperature",
+  [EFormState.Symptoms]:
+    "3. Do you have any of the following symptoms now or within the last 14 days: Cough, smell/taste impairment, fever, breathing difficulties, body aches, headaches, fatigue, sore throat, diarrhoea, and / or runny nose (even if your symptoms are mild)?",
+  [EFormState.CloseContact]:
+    "4. Have you been in contact with anyone who is suspected to have or/has been diagnosed with Covid-19 within the last 14 days?",
 };
 
-export const CLOSE_CONTACT_OPTIONS: TToggleOption[] = [
+export const YES_NO_OPTIONS: TToggleOption[] = [
   {
     name: true,
     label: "Yes",
@@ -92,3 +26,7 @@ export const CLOSE_CONTACT_OPTIONS: TToggleOption[] = [
     label: "No",
   },
 ];
+
+export enum ESymbols {
+  Tick = "✓",
+}

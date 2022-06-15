@@ -1,5 +1,12 @@
 import { EFormState } from "../../constants";
-import { ERROR_MESSAGE } from "../../constants/inputValidations";
+import { ERROR_MESSAGE } from "../../constants/validations";
+
+export const isUndefined = (value: any): boolean => value === undefined;
+
+export const validateIsUndefined = (
+  fieldName: EFormState,
+  value: any
+): string => (isUndefined(value) ? ERROR_MESSAGE[fieldName].isUndefined : "");
 
 export const isEmpty = (value: string): boolean => !!!value.trim().length;
 
@@ -27,7 +34,7 @@ export const validateIsNotNumeric = (
   value: string
 ): string => (isNotNumeric(value) ? ERROR_MESSAGE[fieldName].isNotNumeric : "");
 
-export const validateInput = (fieldName: EFormState, value: string): string => {
+export const validateInput = (fieldName: EFormState, value: any): string => {
   switch (fieldName) {
     case EFormState.Name:
       return (
@@ -39,6 +46,9 @@ export const validateInput = (fieldName: EFormState, value: string): string => {
         validateIsEmpty(fieldName, value) ||
         validateIsNotNumeric(fieldName, value)
       );
+    case EFormState.Symptoms:
+    case EFormState.CloseContact:
+      return validateIsUndefined(fieldName, value);
     default:
       return "";
   }

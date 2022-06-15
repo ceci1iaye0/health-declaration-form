@@ -1,16 +1,14 @@
 import React from "react";
 
-import CheckBox from "../../../components/CheckBox";
 import Text from "../../../components/Text";
 import Toggle from "../../../components/Toggle";
 import {
-  CLOSE_CONTACT_OPTIONS,
   EFormState,
-  SYMPTOMS_OPTIONS,
+  FORM_INPUTS_LABELS,
+  YES_NO_OPTIONS,
 } from "../../../constants";
 import { TFormState } from "../../../constants/types";
-import { disableOtherSymptoms } from "../../../utils/helpers";
-import { validateInput } from "../../../utils/helpers/inputValidation";
+import { validateInput } from "../../../utils/helpers/validations";
 
 export const NameText = ({
   value,
@@ -22,7 +20,7 @@ export const NameText = ({
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <Text
-    label="Name"
+    label={FORM_INPUTS_LABELS[EFormState.Name]}
     defaultValue={value}
     onChange={handleText(EFormState.Name)}
     error={!!validateInput(EFormState.Name, value)}
@@ -41,7 +39,7 @@ export const TemparatureText = ({
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <Text
-    label="Temperature"
+    label={FORM_INPUTS_LABELS[EFormState.Temperature]}
     defaultValue={value}
     onChange={handleText(EFormState.Temperature)}
     error={!!validateInput(EFormState.Temperature, value)}
@@ -51,23 +49,24 @@ export const TemparatureText = ({
   />
 );
 
-export const SymptomsCheckBox = ({
-  values,
-  handleCheckBox,
+export const SymptomsToggle = ({
+  value,
+  handleToggle,
 }: {
-  values: TFormState[EFormState.Symptoms];
-  handleCheckBox: (
+  value: TFormState[EFormState.CloseContact];
+  handleToggle: (
     fieldName: EFormState
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+  ) => (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+    value: string | number | boolean
+  ) => void;
 }) => (
-  <CheckBox
-    label="Symptoms for past 14 days"
-    helperText="Please declare any of the symptom(s) below:"
-    values={values}
-    options={SYMPTOMS_OPTIONS}
-    onChange={handleCheckBox(EFormState.Symptoms)}
-    disable={disableOtherSymptoms}
-    // error={!!validateInput(EFormState.Temperature, value)}
+  <Toggle
+    label={FORM_INPUTS_LABELS[EFormState.Symptoms]}
+    value={value}
+    options={YES_NO_OPTIONS}
+    onChange={handleToggle(EFormState.Symptoms)}
+    color="primary"
   />
 );
 
@@ -84,10 +83,9 @@ export const CloseContactToggle = ({
   ) => void;
 }) => (
   <Toggle
-    label="Have you been in contact with anyone who is suspected to have or/has
-    been diagnosed with Covid-19 within the last 14 days?"
+    label={FORM_INPUTS_LABELS[EFormState.CloseContact]}
     value={value}
-    options={CLOSE_CONTACT_OPTIONS}
+    options={YES_NO_OPTIONS}
     onChange={handleToggle(EFormState.CloseContact)}
     color="primary"
   />

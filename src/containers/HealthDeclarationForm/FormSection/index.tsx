@@ -4,7 +4,7 @@ import Button from "../../../components/Button";
 import {
   CloseContactToggle,
   NameText,
-  SymptomsCheckBox,
+  SymptomsToggle,
   TemparatureText,
 } from "../InputFields";
 import useCustomMethods from "./useCustomMethods";
@@ -12,32 +12,25 @@ import useCustomStates from "./useCustomStates";
 
 const FormSection = () => {
   const { formState, setFormState } = useCustomStates();
-  const {
-    handleText,
-    handleCheckBox,
-    handleToggle,
-    handleSubmit,
-    isFormInvalid,
-  } = useCustomMethods({
-    formState,
-    setFormState,
-  });
+  const { handleText, handleToggle, handleSubmit, isFormInvalid } =
+    useCustomMethods({
+      formState,
+      setFormState,
+    });
 
   return (
     <>
       <NameText value={formState.name} handleText={handleText} />
       <TemparatureText value={formState.temperature} handleText={handleText} />
-      <SymptomsCheckBox
-        values={formState.symptoms}
-        handleCheckBox={handleCheckBox}
-      />
+      <SymptomsToggle value={formState.symptoms} handleToggle={handleToggle} />
       <CloseContactToggle
         value={formState.closeContact}
         handleToggle={handleToggle}
       />
       <Button
-        sx={{ mt: 4 }}
+        sx={{ my: 3, px: 4 }}
         label="Submit"
+        size="large"
         variant="contained"
         disabled={isFormInvalid}
         onClick={handleSubmit}

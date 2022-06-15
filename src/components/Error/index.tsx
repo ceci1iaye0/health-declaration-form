@@ -1,18 +1,23 @@
-import { Alert, AlertProps } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export interface IError extends AlertProps {
-  visible: boolean;
-  label?: string;
-}
+import Button from "../Button";
+import Label from "../Label";
+import { Container } from "./styles";
 
-const Error = ({ visible, label, ...alertProps }: IError) => {
-  if (!visible) return null;
+export type TError = {
+  msg?: string | React.ReactNode;
+};
+
+const Error = ({ msg }: TError) => {
+  const navigate = useNavigate();
+  const refreshPage = () => navigate(0);
 
   return (
-    <Alert severity="error" {...alertProps}>
-      {label && label}
-    </Alert>
+    <Container>
+      <Label label={msg} variant="h5" />
+      <Button label="Try again" variant="outlined" onClick={refreshPage} />
+    </Container>
   );
 };
 

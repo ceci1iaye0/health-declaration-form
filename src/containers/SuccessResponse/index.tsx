@@ -1,14 +1,11 @@
 import React from "react";
 
-import { Container, Label } from "./styles";
+import Label from "../../components/Label";
+import { Container } from "./styles";
 
 const SuccessResponse = () => (
   <Container>
-    <Label>
-      Thank you for your submission.
-      <br />
-      Your response has been captured.
-    </Label>
+    <Label label="Your form has been submission. Thank you!" variant="h6" />
   </Container>
 );
 

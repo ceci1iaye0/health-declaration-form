@@ -1,21 +1,23 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { EPublicRoutes } from "../../constants/routes";
+import { ERoutes } from "../../constants/routes";
 import HealthDelcarationForm from "../../containers/HealthDeclarationForm";
+import HealthDeclarationResponses from "../../containers/HealthDeclarationResponses";
 import SuccessResponse from "../../containers/SuccessResponse";
 
 const Router = () => (
   <Routes>
     <Route
-      path={EPublicRoutes.HealthDeclarationForm}
+      path={ERoutes.HealthDeclarationForm}
       element={<HealthDelcarationForm />}
     />
-    <Route path={EPublicRoutes.SuccessResponse} element={<SuccessResponse />} />
+    <Route path={ERoutes.SuccessResponse} element={<SuccessResponse />} />
     <Route
-      path="*"
-      element={<Navigate to={EPublicRoutes.HealthDeclarationForm} />}
+      path={ERoutes.HealthDeclarationResponses}
+      element={<HealthDeclarationResponses />}
     />
+    <Route path="*" element={<Navigate to={ERoutes.HealthDeclarationForm} />} />
   </Routes>
 );
 

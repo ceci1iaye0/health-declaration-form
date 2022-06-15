@@ -5,7 +5,8 @@ import {
 } from "@mui/material";
 import React from "react";
 
-import { InputContainer, Label } from "./styles";
+import Label from "../Label";
+import { InputContainer } from "./styles";
 
 export interface IText extends Omit<OutlinedTextFieldProps, "label"> {
   label?: string;
@@ -15,7 +16,7 @@ export interface IText extends Omit<OutlinedTextFieldProps, "label"> {
 const Text = ({ label, endAdornment, ...textProps }: IText) => {
   return (
     <InputContainer>
-      {label && <Label>{label}</Label>}
+      <Label label={label} variant="h6" />
       <TextField
         {...textProps}
         InputProps={{

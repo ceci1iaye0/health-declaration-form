@@ -1,16 +1,12 @@
-import { ChangeEvent, Dispatch } from "react";
+import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Action } from "redux";
 
-import {
-  DEFAULT_SYMPTOMS_OPTIONS,
-  EFormState,
-  ESymptoms,
-} from "../../../constants";
-import { TFormState, TSymptoms } from "../../../constants/types";
+import { EFormState } from "../../../constants";
+import { TFormState } from "../../../constants/types";
 import { submitHealthDeclaration } from "../../../store/HealthDeclaration/reducer";
-import { validateInput } from "../../../utils/helpers/inputValidation";
+import { validateInput } from "../../../utils/helpers/validations";
 
 export default ({
   formState,
@@ -23,33 +19,9 @@ export default ({
 
   const navigate = useNavigate();
 
-  const getUpdatedSymptoms = (symptom: string, checked: boolean): TSymptoms => {
-    if (symptom === ESymptoms.None && checked) {
-      return {
-        ...DEFAULT_SYMPTOMS_OPTIONS,
-        [symptom]: checked,
-      };
-    }
-    return {
-      ...formState.symptoms,
-      [symptom]: checked,
-    };
-  };
-
   const handleText =
-    (fieldName: EFormState) => (event: ChangeEvent<HTMLInputElement>) => {
+    (fieldName: EFormState) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setFormState({ ...formState, [fieldName]: event.target.value });
-    };
-
-  const handleCheckBox =
-    (fieldName: EFormState) => (event: ChangeEvent<HTMLInputElement>) => {
-      setFormState({
-        ...formState,
-        [fieldName]: getUpdatedSymptoms(
-          event.target.name,
-          event.target.checked
-        ),
-      });
     };
 
   const handleToggle =
@@ -75,9 +47,7 @@ export default ({
   };
 
   return {
-    getUpdatedSymptoms,
     handleText,
-    handleCheckBox,
     handleToggle,
     handleSubmit,
     isFormInvalid,

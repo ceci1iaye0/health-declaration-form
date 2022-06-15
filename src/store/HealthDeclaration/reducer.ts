@@ -1,5 +1,6 @@
 import produce from "immer";
 
+import { TFormState } from "../../constants/types";
 import AsyncAction from "../../services/AsyncActionHelper";
 
 export const containerId = "HealthDeclaration";
@@ -8,7 +9,15 @@ export const submitHealthDeclaration = new AsyncAction(`${containerId}/SUBMIT`);
 
 export const selector = (state: { [k: string]: any }) => state[containerId];
 
-export const initialState: any = {
+export const initialState: {
+  healthDeclarationsData: TFormState[];
+
+  isGetHealthDeclarationsLoading: boolean;
+  isSumbitHealthDeclarationLoading: boolean;
+
+  getHealthDeclarationsLoadingError: string;
+  submitHealthDeclarationError: string;
+} = {
   healthDeclarationsData: [],
 
   isGetHealthDeclarationsLoading: false,

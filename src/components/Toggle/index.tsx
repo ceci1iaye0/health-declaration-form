@@ -1,5 +1,5 @@
 import {
-  Box,
+  FormControl,
   ToggleButton,
   ToggleButtonGroup,
   ToggleButtonGroupProps,
@@ -7,7 +7,7 @@ import {
 import React from "react";
 
 import { TToggleOption } from "../../constants/types";
-import { Label } from "./styles";
+import Label from "../Label";
 
 export interface IToggle extends Omit<ToggleButtonGroupProps, "value"> {
   label?: string;
@@ -16,8 +16,8 @@ export interface IToggle extends Omit<ToggleButtonGroupProps, "value"> {
 }
 
 const Toggle = ({ label, value, options, ...toggleProps }: IToggle) => (
-  <Box>
-    {label && <Label>{label}</Label>}
+  <FormControl>
+    <Label label={label} variant="h6" />
     <ToggleButtonGroup {...toggleProps}>
       {options?.map((option, index) => (
         <ToggleButton
@@ -29,7 +29,7 @@ const Toggle = ({ label, value, options, ...toggleProps }: IToggle) => (
         </ToggleButton>
       ))}
     </ToggleButtonGroup>
-  </Box>
+  </FormControl>
 );
 
 export default Toggle;
