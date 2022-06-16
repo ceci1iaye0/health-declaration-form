@@ -11,7 +11,6 @@ export enum EInputValidations {
 export const ERROR_MESSAGE = {
   [EFormState.Name]: {
     [EInputValidations.IsEmpty]: "Please enter your name",
-    // max: "Input exceeds maximum of 20 characters",
     [EInputValidations.HasSpecialChars]:
       "Please enter a valid name. Special charaters are not accepted",
   },
